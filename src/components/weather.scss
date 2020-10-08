@@ -1,0 +1,126 @@
+@use "sass:map";
+
+$max-width: 500px;
+$primary: #3a424c;
+$font-primary: #ffffff;
+$font-secondary: #7c7f86;
+$icons: #50b0de;
+
+.container {
+    width: 100%;
+    height: 780px;
+    max-width: $max-width;
+    margin-left: calc((100% - #{$max-width})/2);
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.header {
+    background-color: $primary;
+    padding: 15px 15px 0;
+}
+
+.daily-header {
+    background-color: $primary;
+    padding: 0 15px 15px;
+}
+
+.weekly-header {
+    background-color: $primary;
+    padding: 15px;
+    margin-top: 30%;
+}
+
+.daily-container {
+    background-image: url('../images/cloudy.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 710px;
+    display: block;
+    width: 100%;
+}
+
+.temperature {
+    width: 60%;
+    padding-top: 30%;
+    margin-left: 20%;
+    margin-right: auto;
+}
+
+.weather-condition {
+    display: inline-flex;
+    vertical-align: middle
+}
+
+.cloudy {
+    padding-top: 7px;
+}
+
+.name-text {
+    color: $font-primary;
+}
+
+.weather-text {
+    color: $font-primary;
+    font-weight: 100;
+}
+
+.city-text {
+    color: $font-secondary;
+}
+
+.centered {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.icon {
+    color: $icons;
+}
+
+.inline-flex {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.inline-flex2 {
+    display: inline-flex;
+}
+
+.margin-top {
+    margin-top: 13px;
+}
+
+.one-day {
+    width: calc(100% / 7);
+    padding-bottom: 4px;
+}
+
+.temp {
+    padding-left: 7px;
+    padding-right: 7px;
+    color: $font-primary;
+}
+
+.img {
+    margin-top: '-15px'
+}
+
+.margin-left {
+    margin-left: 15px;
+}
+
+.MuiAutocomplete-listbox {
+    color: 'red !important'
+  }
