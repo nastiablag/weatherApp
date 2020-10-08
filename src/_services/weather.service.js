@@ -1,4 +1,4 @@
-import * as Constants from '../constants';
+import * as Constants from '../_constants';
 
 export const weatherService = {
     getCityDataByCoordinates,

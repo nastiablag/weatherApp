@@ -3,4 +3,4 @@ export const defaultLat = '54.6872'
 export const defaultLon = '25.2797'
 
 //weather API key
-export const key = 'a5545cbee07003e355d7e113cd9b6194'
+export const key = '6ecd5f67458abcd4600b3972ee07660f'

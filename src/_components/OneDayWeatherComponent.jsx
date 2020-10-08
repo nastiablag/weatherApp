@@ -1,8 +1,8 @@
 import React from 'react';
 import {Grid, Typography, Box} from '@material-ui/core';
 import './weather.scss';
-import * as Constants from '../constants';
-import {setIconFromLink} from '../helpers';
+import * as Constants from '../_constants';
+import {setIconFromLink} from '../_helpers';
 
 export const OneDayForecastHeader = ({locationCity}) => {
 

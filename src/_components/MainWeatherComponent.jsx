@@ -1,13 +1,16 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import {CircularProgress} from '@material-ui/core';
 import './weather.scss';
-import {weatherService} from '../services';
-import HeaderComponent from './HeaderComponent';
-import {OneDayForecastHeader, OneDayForecastContainer} from './OneDayWeatherComponent';
-import WeekForecastComponent from './OneWeekWeatherComponent';
-import {CitiesListComponent} from '../components';
+import {weatherService} from '../_services';
+import {
+    OneDayForecastHeader,
+    OneDayForecastContainer,
+    HeaderComponent,
+    OneWeekWeatherComponent,
+    CitiesListComponent
+} from '.';
 
-export default function  WeatherApp (props) {
+export const MainWeatherComponent = (props) => {
 
     const [city, setCity] = useState([]);
     const [open, setOpen] = useState(false);
@@ -38,16 +41,19 @@ export default function  WeatherApp (props) {
         <Fragment>
             {city.main !== undefined ? 
                 <>
-                    <HeaderComponent locationCity={city.name} handleOpen={(open) => handleOpen(open)} open={open}/>
+                    <HeaderComponent 
+                        locationCity={city.name} 
+                        handleOpen={(open) => handleOpen(open)} 
+                        open={open}/>
                     {!open ?
                         <>
                             <OneDayForecastHeader locationCity={city}/>
                             <div className='daily-container'>
                                 <OneDayForecastContainer locationCity={city}/>
-                                <WeekForecastComponent lat={lat} lon={lon}/>
+                                <OneWeekWeatherComponent lat={lat} lon={lon}/>
                             </div>
                         </>
-                    : <CitiesListComponent handleSelect={(test) => handleSelect(test)}/>}
+                    : <CitiesListComponent handleSelect={(response) => handleSelect(response)}/>}
                  </>
             : <CircularProgress/>}
         </Fragment>

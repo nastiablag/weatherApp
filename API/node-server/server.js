@@ -1,9 +1,20 @@
 const http = require('http');
 const fs = require('fs');
+const { SourceMap } = require('module');
 const URL = require('url').URL;
 
 http.createServer(function (request, response) {
   const { method, url } = request;
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'OPTIONS, GET',
+    'Access-Control-Max-Age': 2592000, // 30 days
+    'Access-Control-Allow-Headers': '*',
+    'Content-Type': 'aplication/json'
+    /** add other headers as per requirement */
+  };
+  let wholeUrl = new URL(url, 'http://localhost:8045/');
+  console.log(method, wholeUrl.pathname, wholeUrl.searchParams.get('name'));
   
   // control for favicon
   if (request.url === '/favicon.ico') {
@@ -12,33 +23,44 @@ http.createServer(function (request, response) {
     return;
   }
 
-  let wholeUrl = new URL(url, 'http://localhost:8080/');
+  if (request.method === 'OPTIONS') {
+    response.writeHead(204, headers);
+    response.end();
+    return;
+  }
+
   
   if(method === 'GET' && wholeUrl.pathname === '/city'){
     let searchedName = wholeUrl.searchParams.get('name');
 
     const cityObject = function (name, lon, lat) {
-      this._name = name;
-      this._lon = lon;
-      this._lat = lat;  
+      this.name = name;
+      this.lon = lon;
+      this.lat = lat;  
     }
 
     fs.readFile('city.list.json', (err, data) => {
       if (err) throw err;
       let cities = JSON.parse(data);
       let cityArray = [];
+      let i = 0;
 
-      cities.forEach(element => {
+      cities.some(element => {
         let city = String(element.name).toUpperCase();
         if(city.startsWith(searchedName.toUpperCase())) {
-          cityArray.push(new cityObject(element.name, element.coord.lon, element.coord.lat))
+          cityArray.push(new cityObject(element.name, element.coord.lon, element.coord.lat));
+          i++;
+          return i > 30;
         }
       });
 
-      response.writeHead(200, {'Content-Type': 'aplication/json'});
+      response.writeHead(200, headers);
       response.write(JSON.stringify(cityArray));
       response.end();
     });
-  
+  } else {
+    res.writeHead(405, headers);
+    res.end();
+    return;
   }
-}).listen(8080);
+}).listen(8045);

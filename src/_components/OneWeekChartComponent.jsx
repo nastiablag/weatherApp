@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Chart from 'react-apexcharts';
-import {weatherService} from '../services';
+import {weatherService} from '../_services';
 
-export default class WeeklyWeather extends Component {
+export default class OneWeekChartComponent extends Component {
   
   constructor() {
     super();

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import './weather.scss';
-import * as Constants from '../constants';
-import WeatherApp from './WeatherApp';
+import '../weather.scss';
+import * as Constants from '../../_constants';
+import {MainWeatherComponent
+} from '..';
 
 export default class LocationDetectorComponent extends Component {
 
@@ -48,7 +49,7 @@ export default class LocationDetectorComponent extends Component {
 
         return (
             <>
-                <WeatherApp lat={lat} lon={lon}/>
+                <MainWeatherComponent lat={lat} lon={lon}/>
             </>
         );
 

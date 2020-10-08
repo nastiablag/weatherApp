@@ -1,11 +1,10 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment} from 'react';
 import {Grid, Typography, IconButton, Button} from '@material-ui/core';
-import './weather.scss';
+import '../weather.scss';
 import {CloudQueue, Settings} from '@material-ui/icons';
-import * as Constants from '../constants';
+import * as Constants from '../../_constants';
 
-export default function HeaderComponent({locationCity, handleOpen, open}) {
-
+export const HeaderComponent = ({locationCity, handleOpen, open}) => {
 
     return (
         <Fragment>

@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {Grid, Typography, Box} from '@material-ui/core';
 import './weather.scss';
 import { fromUnixTime, isToday} from 'date-fns';
-import WeeklyWeather from './OneWeekChartComponent';
-import {weatherService} from '../services';
-import * as Constants from '../constants';
-import {setIconFromLink} from '../helpers';
+import {weatherService} from '../_services';
+import * as Constants from '../_constants';
+import {setIconFromLink} from '../_helpers';
+import OneWeekChartComponent from './OneWeekChartComponent';
 
-export default function WeekForecastComponent ({lat, lon}) {
+export const OneWeekWeatherComponent = ({lat, lon}) => {
 
     const [weekData, setWeekData] = useState([]);
 
@@ -34,7 +34,7 @@ export default function WeekForecastComponent ({lat, lon}) {
             <div className='inline-flex margin-top'>
                 {weekData.map(day => (
                     !isToday(fromUnixTime(day.dt)) ?
-                        <div className='one-day'>
+                        <div className='one-day' key={day.dt}>
                             <Typography className='name-text'>
                                 {convertFromUnix(day.dt)}
                             </Typography>
@@ -51,7 +51,7 @@ export default function WeekForecastComponent ({lat, lon}) {
                     : null
                 ))}
             </div>
-            <WeeklyWeather lat={lat} lon={lon}/> 
+            <OneWeekChartComponent lat={lat} lon={lon}/> 
         </>  
     );
 }
