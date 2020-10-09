@@ -1,14 +1,19 @@
-@use "sass:map";
+@use 'sass:map';
 
 $max-width: 500px;
+$max-heigh: 710px;
 $primary: #3a424c;
+$secondary: #4e555e;
 $font-primary: #ffffff;
 $font-secondary: #7c7f86;
 $icons: #50b0de;
+$list-container-heigh: 690px;
+
+$img: '../images/cloudy.jpg';
 
 .container {
     width: 100%;
-    height: 780px;
+    height: $max-heigh;
     max-width: $max-width;
     margin-left: calc((100% - #{$max-width})/2);
     margin-right: auto;
@@ -22,9 +27,14 @@ $icons: #50b0de;
     padding: 15px 15px 0;
 }
 
-.daily-header {
+.one-day-header {
     background-color: $primary;
-    padding: 0 15px 15px;
+    padding: 10px 15px 15px;
+}
+
+.autocomplete-header {
+    background-color: $primary;
+    padding: 15px;
 }
 
 .weekly-header {
@@ -33,12 +43,17 @@ $icons: #50b0de;
     margin-top: 30%;
 }
 
-.daily-container {
-    background-image: url('../images/cloudy.jpg');
+.list-container {
+    background-color: $secondary;
+    height: $list-container-heigh;
+}
+
+.img-container {
+    background-image: url($img);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 710px;
+    height: $max-heigh;
     display: block;
     width: 100%;
 }
@@ -50,26 +65,25 @@ $icons: #50b0de;
     margin-right: auto;
 }
 
-.weather-condition {
+.condition-container {
     display: inline-flex;
     vertical-align: middle
 }
 
-.cloudy {
+.condition-text {
     padding-top: 7px;
 }
 
-.name-text {
+.text-primary {
     color: $font-primary;
 }
 
-.weather-text {
-    color: $font-primary;
-    font-weight: 100;
-}
-
-.city-text {
+.text-city {
     color: $font-secondary;
+}
+
+.icon {
+    color: $icons;
 }
 
 .centered {
@@ -84,22 +98,16 @@ $icons: #50b0de;
     text-align: left;
 }
 
-.icon {
-    color: $icons;
-}
-
 .inline-flex {
-    display: inline-flex;
-    width: 100%;
-    justify-content: center;
-}
-
-.inline-flex2 {
     display: inline-flex;
 }
 
 .margin-top {
     margin-top: 13px;
+}
+
+.margin-left {
+    margin-left: 15px;
 }
 
 .one-day {
@@ -112,15 +120,3 @@ $icons: #50b0de;
     padding-right: 7px;
     color: $font-primary;
 }
-
-.img {
-    margin-top: '-15px'
-}
-
-.margin-left {
-    margin-left: 15px;
-}
-
-.MuiAutocomplete-listbox {
-    color: 'red !important'
-  }

@@ -1,7 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Chart from 'react-apexcharts';
-import {weatherService} from '../_services';
+import { weatherService } from '../../_services';
 
+/**
+ * @description Displays week forecast chart
+ */
 export default class OneWeekChartComponent extends Component {
   
   constructor() {
@@ -50,10 +53,16 @@ export default class OneWeekChartComponent extends Component {
     };
   }
 
+  /**
+   * @description Fetches city data on mounted component
+   */
   componentDidMount() {
     this.fetchCityDailyData();
   }
 
+  /**
+   * @description Fetches city data by coordinates
+   */
   fetchCityDailyData = () => {
 
     const {lat, lon} = this.props;
@@ -62,9 +71,13 @@ export default class OneWeekChartComponent extends Component {
     .then(response => this.setDataForChart(response.daily.slice(1))); 
   }
   
-  setDataForChart = (data) => {
+  /**
+   * @description Sets data for chart
+   * @param data 
+   */
+  setDataForChart = data => {
 
-    const {series} = this.state.series;
+    const {series} = this.state;
 
     data.map(day => (
       this.setState(prev => ({

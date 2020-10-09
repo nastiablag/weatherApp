@@ -1,16 +1,20 @@
-import React, {Fragment, useEffect, useState} from 'react';
-import {CircularProgress} from '@material-ui/core';
-import './weather.scss';
-import {weatherService} from '../_services';
+import React, { Fragment, useEffect, useState } from 'react';
+import { CircularProgress } from '@material-ui/core';
+import '../../_styles/weather.scss';
+import { weatherService } from '../../_services';
 import {
     OneDayForecastHeader,
     OneDayForecastContainer,
     HeaderComponent,
     OneWeekWeatherComponent,
     CitiesListComponent
-} from '.';
+} from '..';
 
-export const MainWeatherComponent = (props) => {
+/**
+ * @description Displays main system container which renders all components 
+ * @param props 
+ */
+export const MainWeatherComponent = props => {
 
     const [city, setCity] = useState([]);
     const [open, setOpen] = useState(false);
@@ -18,20 +22,34 @@ export const MainWeatherComponent = (props) => {
     const [lon, setLon] = useState(props.lon);
     const [selected, setSelected] = useState(null);
 
+    /**
+     * @description Fetches city data
+     */
     useEffect(() => {
-        fetchCountryByCoordinates();
+        fetchCityByCoordinates();
     }, [selected]);
 
-    const fetchCountryByCoordinates = async () => {
+    /**
+     * @description Fetches city data by coordinates
+     */
+    const fetchCityByCoordinates = async () => {
         await weatherService.getCityDataByCoordinates(lat, lon)
         .then(response => setCity(response));    
     };
 
-    const handleOpen = (open) => {
+    /**
+     * @description Sets open state on button click
+     * @param open 
+     */
+    const handleOpen = open => {
         setOpen(open);
     }
     
-    const handleSelect = (selected) => {
+    /**
+     * @description Sets selected, lat and lon on city select
+     * @param selected 
+     */
+    const handleSelect = selected => {
         setSelected(selected);
         setLat(selected.lat);
         setLon(selected.lon);
@@ -44,11 +62,12 @@ export const MainWeatherComponent = (props) => {
                     <HeaderComponent 
                         locationCity={city.name} 
                         handleOpen={(open) => handleOpen(open)} 
-                        open={open}/>
+                        open={open}
+                    />
                     {!open ?
                         <>
                             <OneDayForecastHeader locationCity={city}/>
-                            <div className='daily-container'>
+                            <div className='img-container'>
                                 <OneDayForecastContainer locationCity={city}/>
                                 <OneWeekWeatherComponent lat={lat} lon={lon}/>
                             </div>
@@ -59,4 +78,3 @@ export const MainWeatherComponent = (props) => {
         </Fragment>
     );
 }
-

@@ -1,21 +1,12 @@
 import React from 'react';
-import './_components/weather.scss';
+import './_styles/weather.scss';
 import { Switch, Route } from 'react-router-dom';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import {Routes} from './_components/RoutingComponent';
+import { createMuiTheme, ThemeProvider, CssBaseline } from '@material-ui/core';
+import { Routes } from './_components';
 
 function App() {
 
-  const theme = 
- 
-      createMuiTheme({
-        palette: {
-          type: 'dark',
-          main: 'red'
-        }
-    })
-  ;
+  const theme = createMuiTheme({palette: { type: 'dark'}});
 
   return (
     <ThemeProvider theme={theme}>

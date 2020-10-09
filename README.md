@@ -1,4 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## To run this project for the first time :
+1. Check if you have Node installed and if global PATH variable is configured to include node.
+2. Run ```npm install ``` to install all required node packages.
+3. Run ```npm start ``` to start main react project.
+4. In separate terminal open API/node-server folder and run ``` node ./server.js ```
+5. Open web browser and go to [http://localhost:3000](http://localhost:3000)
+6. Enjoy :)
+
+
 
 ## Available Scripts
 
@@ -66,3 +74,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,6 +1,10 @@
 import React from 'react';
 
-export const setIconFromLink = (icon) => {
+/**
+ * @description Returns icon image from API
+ * @param icon 
+ */
+export const setIconFromLink = icon => {
     return (
         <img 
             src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
