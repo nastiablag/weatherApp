@@ -30,7 +30,7 @@ export const CitiesListComponent = ({handleSelect}) => {
           onInputChange={event => handleChange(event)}
           onChange={(event, value) => handleSelect(value)}
           getOptionLabel={(option) => option.name}
-          renderInput={(params) => <TextField {...params} label={Constants.citySearch} variant='outlined'/>}
+          renderInput={(params) => <TextField {...params} placeholder={Constants.citySearch} variant='outlined'/>}
         />
       </div>
       <Box className='list-container'/>
